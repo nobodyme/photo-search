@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- app and search bar -->
+    <string name="app_name">Photo Search</string>
+    <string name="search_hint">Search Images</string>
+
+    <!-- Error names for Volley -->
+    <string name="connection_error">Please check your connection!</string>
+    <string name="no_images">Search for images to display</string>
+    <string name="server_error">The server could not be found, try again after some time!</string>
+    <string name="parse_error">Parsing error, try again after some time!</string>
+    <string name="timeout_error">Connection TimeOut, please check your internet connection!</string>
+
+    <!-- Menu names -->
+    <string name="menu_zoom">Stretch image to screen</string>
+    <string name="menu_original_size">Original size</string>
+    <string name="share">Share image</string>
+
+    <!-- Toast strings -->
+    <string name="image_loading">Image is loading</string>
+    <string name="error_loading">Error loading image</string>
+
+
+</resources>
