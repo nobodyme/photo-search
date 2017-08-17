@@ -16,6 +16,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,13 +39,12 @@ public class ImageActivity extends AppCompatActivity {
 
         fullImageView = (ImageView) findViewById(R.id.fullImageid);
         fullImageString = getIntent().getExtras().getString("imageuri");
-//        final ProgressBar progressBar = (ProgressBar)findViewById(R.id.loading_indicator_main_grid);
+        final ProgressBar progressBar = (ProgressBar)findViewById(R.id.loading_indicator_main_grid);
 
         Glide
                 .with(this)
                 .load(fullImageString)
-                .placeholder(R.drawable.ic_loading)
-                /*.listener(new RequestListener<String, GlideDrawable>() {
+                .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
                         progressBar.setVisibility(View.INVISIBLE);
@@ -51,11 +54,11 @@ public class ImageActivity extends AppCompatActivity {
                     @Override
                     public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                         progressBar.setVisibility(View.INVISIBLE);
-                        prepareShareIntent(((GlideBitmapDrawable)resource).getBitmap());
+                        prepareShareIntent(((GlideBitmapDrawable) resource).getBitmap());
                         attachShareIntentAction();
                         return false;
                     }
-                })*/
+                })
                 .error(R.drawable.ic_image_error)
                 .into(fullImageView);
 
@@ -76,8 +79,7 @@ public class ImageActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.full_img_menu, menu);
         MenuItem shareItem = menu.findItem(R.id.action_share);
-        myShareActionProvider =
-                (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
+        myShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
         attachShareIntentAction();
         return true;
     }
